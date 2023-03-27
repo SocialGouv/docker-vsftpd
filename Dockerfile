@@ -40,6 +40,7 @@ COPY run-vsftpd.sh /usr/sbin/
 RUN chmod +x /usr/sbin/run-vsftpd.sh
 RUN mkdir -p /home/vsftpd/
 RUN chown -R ftp:ftp /home/vsftpd/
+RUN chown -R ftp:ftp /etc/vsftpd/
 
 VOLUME /home/vsftpd
 VOLUME /var/log/vsftpd
