@@ -1,10 +1,6 @@
-# fauria/vsftpd
+# socialgouv/docker-vsftpd
 
-![docker_logo](https://raw.githubusercontent.com/fauria/docker-vsftpd/master/docker_139x115.png)![docker_fauria_logo](https://raw.githubusercontent.com/fauria/docker-vsftpd/master/docker_fauria_161x115.png)
-
-[![Docker Pulls](https://img.shields.io/docker/pulls/fauria/vsftpd.svg?style=plastic)](https://hub.docker.com/r/fauria/vsftpd/)
-[![Docker Build Status](https://img.shields.io/docker/build/fauria/vsftpd.svg?style=plastic)](https://hub.docker.com/r/fauria/vsftpd/builds/)
-[![](https://images.microbadger.com/badges/image/fauria/vsftpd.svg)](https://microbadger.com/images/fauria/vsftpd "fauria/vsftpd")
+![docker_logo](https://raw.githubusercontent.com/socialgouv/docker-vsftpd/master/docker_139x115.png)!
 
 This Docker container implements a vsftpd server, with the following features:
 
@@ -12,14 +8,13 @@ This Docker container implements a vsftpd server, with the following features:
  * vsftpd 3.0
  * Virtual users
  * Passive mode
- * Logging to a file or `STDOUT`.
 
-### Installation from [Docker registry hub](https://registry.hub.docker.com/r/fauria/vsftpd/).
+### Installation from [Github registry](https://github.com/orgs/SocialGouv/packages/container/package/docker-vsftpd).
 
 You can download the image with the following command:
 
 ```bash
-docker pull fauria/vsftpd
+docker pull ghcr.io/socialgouv/docker-vsftpd
 ```
 
 Environment variables
@@ -83,13 +78,6 @@ This image uses environment variables to allow the configuration of some paramet
 
 ----
 
-* Variable name: `LOG_STDOUT`
-* Default value: Empty string.
-* Accepted values: Any string to enable, empty string or not defined to disable.
-* Description: Output vsftpd log through STDOUT, so that it can be accessed through the [container logs](https://docs.docker.com/engine/reference/commandline/container_logs).
-
-----
-
 * Variable name: `FILE_OPEN_MODE`
 * Default value: 0666
 * Accepted values: File system permissions.
@@ -137,13 +125,13 @@ Use cases
 1) Create a temporary container for testing purposes:
 
 ```bash
-  docker run --rm fauria/vsftpd
+  docker run --rm ghcr.io/socialgouv/docker-vsftpd
 ```
 
 2) Create a container in active mode using the default user account, with a binded data directory:
 
 ```bash
-docker run -d -p 21:21 -v /my/data/directory:/home/vsftpd --name vsftpd fauria/vsftpd
+docker run -d -p 21:21 -v /my/data/directory:/home/vsftpd --name vsftpd ghcr.io/socialgouv/docker-vsftpd
 # see logs for credentials:
 docker logs vsftpd
 ```
@@ -155,7 +143,7 @@ docker run -d -v /my/data/directory:/home/vsftpd \
 -p 20:20 -p 21:21 -p 21100-21110:21100-21110 \
 -e FTP_USER=myuser -e FTP_PASS=mypass \
 -e PASV_ADDRESS=127.0.0.1 -e PASV_MIN_PORT=21100 -e PASV_MAX_PORT=21110 \
---name vsftpd --restart=always fauria/vsftpd
+--name vsftpd --restart=always ghcr.io/socialgouv/docker-vsftpd
 ```
 
 4) Manually add a new FTP user to an existing container:
