@@ -3,7 +3,6 @@ FROM centos:7
 ARG USER_ID=14
 ARG GROUP_ID=50
 
-MAINTAINER Fer Uria <fauria@gmail.com>
 LABEL Description="vsftpd Docker image based on Centos 7. Supports passive mode and virtual users." \
 	License="Apache License 2.0" \
 	Usage="docker run -d -p [HOST PORT NUMBER]:21 -v [HOST FTP HOME]:/home/vsftpd fauria/vsftpd" \
@@ -48,3 +47,5 @@ VOLUME /var/log/vsftpd
 EXPOSE 20 21
 
 CMD ["/usr/sbin/run-vsftpd.sh"]
+
+USER ${USER_ID}
