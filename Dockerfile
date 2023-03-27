@@ -28,13 +28,16 @@ RUN mkdir -p /etc/vsftpd.d/ \
 RUN chown -R vsftpd:vsftpd /home/vsftpd/
 RUN touch /etc/vsftpd.key \
 	&& touch /etc/vsftpd.pem \
+	&& touch /var/log/vsftpd.log \
 	&& chown vsftpd:vsftpd /etc/vsftpd.key \
-	&& chown vsftpd:vsftpd /etc/vsftpd.pem
+	&& chown vsftpd:vsftpd /etc/vsftpd.pem \
+	&& chown vsftpd:vsftpd /var/log/vsftpd.log
 
-CMD ["/usr/sbin/run-vsftpd.sh"]
+CMD ["/usr/local/bin/run-vsftpd.sh"]
 
 COPY --chown=vsftpd:vsftpd vsftpd.conf /etc/vsftpd/
 COPY vsftpd_virtual /etc/pam.d/
-COPY run-vsftpd.sh /usr/sbin/
+COPY run-vsftpd.sh /usr/local/bin/
+COPY autoclean-logs.sh /usr/local/bin/
 
 USER 1001
