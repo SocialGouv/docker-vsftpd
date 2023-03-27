@@ -32,7 +32,7 @@ This image uses environment variables to allow the configuration of some paramet
 * Variable name: `FTP_PASS`
 * Default value: Random string.
 * Accepted values: Any string.
-* Description: If you don't specify a password for the default FTP account through `FTP_PASS`, a 16 character random string will be automatically generated. You can obtain this value through the [container logs](https://docs.docker.com/engine/reference/commandline/container_logs/).
+* Description: Password for the default FTP account. If you don't specify it through the `FTP_USER` environment variable at run time, `admin` will be used by default.
 
 ----
 

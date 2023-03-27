@@ -8,18 +8,16 @@ LABEL Description="vsftpd Docker image based on Centos 7. Supports passive mode 
 	Usage="docker run -d -p [HOST PORT NUMBER]:21 -v [HOST FTP HOME]:/home/vsftpd fauria/vsftpd" \
 	Version="1.0"
 
-RUN yum -y update && yum clean all
-RUN yum install -y \
+RUN yum -y update && yum install -y \
 	vsftpd \
 	db4-utils \
 	db4 \
 	iproute && yum clean all
 
-RUN usermod -u ${USER_ID} ftp
-RUN groupmod -g ${GROUP_ID} ftp
+RUN usermod -u ${USER_ID} ftp && groupmod -g ${GROUP_ID} ftp
 
 ENV FTP_USER **String**
-ENV FTP_PASS **Random**
+ENV FTP_PASS **String**
 ENV PASV_ADDRESS **IPv4**
 ENV PASV_ADDR_RESOLVE NO
 ENV PASV_ENABLE YES
