@@ -2,6 +2,8 @@
 
 set -e
 
+openssl req -x509 -nodes -days 720 -newkey rsa:4096 -keyout /etc/vsftpd.key -out /etc/vsftpd.pem
+
 # If no env var for FTP_USER has been specified, use 'admin':
 if [ "$FTP_USER" = "**String**" ]; then
     export FTP_USER='admin'

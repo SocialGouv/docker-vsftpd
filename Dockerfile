@@ -39,6 +39,10 @@ RUN chmod +x /usr/sbin/run-vsftpd.sh
 RUN mkdir -p /home/vsftpd/
 RUN chown -R ftp:ftp /home/vsftpd/
 RUN chown -R ftp:ftp /etc/vsftpd/
+RUN touch /etc/vsftpd.key \
+	&& touch /etc/vsftpd.pem \
+	&& chown ftp:ftp /etc/vsftpd.key \
+	&& chown ftp:ftp /etc/vsftpd.pem
 
 VOLUME /home/vsftpd
 VOLUME /var/log/vsftpd
