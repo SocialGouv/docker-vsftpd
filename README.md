@@ -4,7 +4,7 @@
 
 This Docker container implements a vsftpd server, with the following features:
 
- * Centos 7 base image.
+ * Debian 11 base image.
  * vsftpd 3.0
  * Virtual users
  * Passive mode
@@ -89,13 +89,6 @@ This image uses environment variables to allow the configuration of some paramet
 * Default value: 077
 * Accepted values: File system permissions.
 * Description: The value that the umask for file creation is set to for local users. NOTE! If you want to specify octal values, remember the "0" prefix otherwise the value will be treated as a base 10 integer!
-
-----
-
-* Variable name: `REVERSE_LOOKUP_ENABLE`
-* Default value: YES
-* Accepted values: <NO|YES>
-* Description: Set to NO if you want to avoid performance issues where a name server doesn't respond to a reverse lookup.
 
 ----
 
