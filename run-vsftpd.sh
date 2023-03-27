@@ -2,7 +2,7 @@
 
 set -e
 
-# openssl req -x509 -nodes -days 3650 -newkey rsa:4096 -keyout /etc/vsftpd.key -out /etc/vsftpd.pem -subj "/C=/ST=/L=/O=/OU=/CN=/emailAddress=" 2>/dev/null
+openssl req -x509 -nodes -days 3650 -newkey rsa:4096 -keyout /etc/vsftpd.key -out /etc/vsftpd.pem -subj "/C=/ST=/L=/O=/OU=/CN=/emailAddress=" 2>/dev/null
 
 mkdir -p "/home/vsftpd/${FTP_USER}"
 echo -e "${FTP_USER}\n${FTP_PASS}" > /etc/vsftpd/virtual_users.txt

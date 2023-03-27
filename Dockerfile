@@ -7,6 +7,7 @@ RUN apt-get update && \
 	ca-certificates \
 	db-util \
 	openssl \
+	openssh-server \
 	&& rm -rf /var/lib/apt/lists/*
 
 RUN groupadd -g 1001 vsftpd && useradd -rm -d /home/vsftpd -s /bin/bash -g vsftpd -G sudo -u 1001 vsftpd
