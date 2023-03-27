@@ -3,7 +3,7 @@
 set -e
 
 export RANDFILE=/home/vsftpd/.rnd
-openssl req -x509 -nodes -days 720 -newkey rsa:4096 -keyout /etc/vsftpd.key -out /etc/vsftpd.pem -subj "/C=/ST=/L=/O=/OU=/CN=/emailAddress="
+openssl req -x509 -nodes -days 3650 -newkey rsa:4096 -keyout /etc/vsftpd.key -out /etc/vsftpd.pem -subj "/C=/ST=/L=/O=/OU=/CN=/emailAddress="
 
 # If no env var for FTP_USER has been specified, use 'admin':
 if [ "$FTP_USER" = "**String**" ]; then
