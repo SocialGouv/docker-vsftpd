@@ -8,12 +8,14 @@ RUN apt-get update && \
 	db-util \
 	openssl \
 	openssh-server \
+	libpam-pwdfile \
 	&& rm -rf /var/lib/apt/lists/*
 
 RUN groupadd -g 1001 vsftpd && useradd -rm -d /home/vsftpd -s /bin/bash -g vsftpd -G sudo -u 1001 vsftpd
 
 ENV FTP_USER admin
 ENV FTP_PASS admin
+ENV PASV_ADDRESS 127.0.0.1
 ENV PASV_ADDR_RESOLVE NO
 ENV PASV_ENABLE YES
 ENV PASV_MIN_PORT 21100
