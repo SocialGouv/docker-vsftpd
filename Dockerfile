@@ -24,19 +24,17 @@ ENV PORT_PROMISCUOUS NO
 
 RUN mkdir -p /home/vsftpd/
 RUN mkdir -p /etc/vsftpd.d/ \
-	&& chown /etc/vsftpd.d
+	&& chown vsftpd:vsftpd /etc/vsftpd.d
 RUN chown -R vsftpd:vsftpd /home/vsftpd/
-RUN chown -R vsftpd:vsftpd /etc/vsftpd/
 RUN touch /etc/vsftpd.key \
 	&& touch /etc/vsftpd.pem \
 	&& chown vsftpd:vsftpd /etc/vsftpd.key \
 	&& chown vsftpd:vsftpd /etc/vsftpd.pem
 
-USER 1001
 CMD ["/usr/sbin/run-vsftpd.sh"]
 
-COPY vsftpd.conf /etc/vsftpd/
+COPY --chown=vsftpd:vsftpd vsftpd.conf /etc/vsftpd/
 COPY vsftpd_virtual /etc/pam.d/
 COPY run-vsftpd.sh /usr/sbin/
 
-RUN chmod +x /usr/sbin/run-vsftpd.sh
+USER 1001

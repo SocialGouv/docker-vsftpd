@@ -17,7 +17,7 @@ echo "local_umask=${LOCAL_UMASK}" >> /etc/vsftpd.d/env.conf
 echo "pasv_promiscuous=${PASV_PROMISCUOUS}" >> /etc/vsftpd.d/env.conf
 echo "port_promiscuous=${PORT_PROMISCUOUS}" >> /etc/vsftpd.d/env.conf
 
-cat /etc/vsftpd.d/* >> /etc/vsftpd.d/env.conf
+cat /etc/vsftpd.d/* >> /etc/vsftpd/vsftpd.conf
 
 echo "starting vsftpd server"
-exec vsftpd -xferlog_enable=YES -vsftpd_log_file=$(tty) /etc/vsftpd/vsftpd.conf
+exec vsftpd /etc/vsftpd/vsftpd.conf
